@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>パスワード認証</title>
+    <style>
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background-color: #f0f2f5; }
+        #container { background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); text-align: center; min-width: 300px; }
+        input[type="password"] { width: 250px; padding: 12px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; }
+        input[type="submit"] { width: 100%; padding: 12px; border: none; border-radius: 4px; background-color: #007bff; color: white; font-size: 16px; cursor: pointer; }
+        #messageArea { color: red; margin-top: 10px; font-weight: bold; min-height: 20px; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <form id="passwordForm">
+            <p>パスワードを入力してください</p>
+            <input type="password" id="passwordInput" placeholder="Password" required>
+            <input type="submit" value="認証">
+            <div id="messageArea"></div>
+        </form>
+    </div>
+
+    <script>
+        // ★★★ 1. ここに、あなたが設定したいパスワードを入力してください ★★★
+        const CORRECT_PASSWORD = "Shinobu150";
+
+        // ★★★ 2. ここに、パスワード成功後に移動させたいYouTubeのURLを入力してください ★★★
+        const YOUTUBE_URL = "https://www.youtube.com/watch?v=Ww_XuTPFH48";
+
+
+        document.getElementById('passwordForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const inputPassword = document.getElementById('passwordInput').value;
+            const messageArea = document.getElementById('messageArea');
+
+            if (inputPassword === CORRECT_PASSWORD) {
+                window.location.href = YOUTUBE_URL;
+            } else {
+                messageArea.textContent = "パスワードが正しくありません。";
+            }
+        });
+    </script>
+</body>
+</html>
